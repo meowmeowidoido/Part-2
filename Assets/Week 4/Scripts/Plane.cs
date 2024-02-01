@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,12 +15,15 @@ public class Plane : MonoBehaviour
     Vector2 currentPosition;
     Rigidbody2D rigidbody;
     public float speed = 1f;
+    public AnimationCurve landing;
+    float landingTimer;
     private void Start()
     {
        lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0,transform.position);
         rigidbody = GetComponent<Rigidbody2D>();
+       
     }
 
     
@@ -38,6 +42,17 @@ public class Plane : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            landingTimer += 0.5f*Time.deltaTime;
+            float interpolation= landing.Evaluate(landingTimer);
+            if (transform.localScale.z < 0.1f)
+            {
+                Destroy(gameObject);
+            }
+            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, interpolation);
+
+        }
         lineRenderer.SetPosition(0, transform.position);
         if (points.Count > 0)
         {
@@ -52,6 +67,7 @@ public class Plane : MonoBehaviour
                 lineRenderer.positionCount--;
             }
         }
+
     }
     private void  OnMouseDown()
     {
