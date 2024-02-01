@@ -81,8 +81,8 @@ public class Plane : MonoBehaviour
                 lineRenderer.positionCount--;
             }
         }
-        
-
+      
+       
     }
     private void  OnMouseDown()
     {
@@ -104,13 +104,38 @@ public class Plane : MonoBehaviour
         }
 
         }
-    private void OnTriggerEnter2D()
+
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        spriteRenderer.color = Color.red;
+        
+        
+        float tooClose = Vector3.Distance(gameObject.transform.position, collision.transform.position);
+        
+            print("too close");
+            if (tooClose > -0.25)
+            {
+
+            spriteRenderer.color = Color.red;
+             if(Vector2.Distance(transform.position, collision.transform.position) < 1.2f)//1.0f for planes to look like they actually collide
+             {
+                 Destroy(gameObject);
+             }
+            
+
+        }
     }
+    
 
     private void OnTriggerExit2D()
     {
         spriteRenderer.color = Color.white;
     }
-   }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject, 3f);
+    }
+
+
+}

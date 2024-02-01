@@ -15,7 +15,7 @@ public class PlaneSpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        print(timer);
+        
         if (timer >3)
         {
             Instantiate(plane);
