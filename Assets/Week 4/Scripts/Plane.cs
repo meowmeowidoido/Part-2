@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Plane : MonoBehaviour
 {
@@ -14,21 +15,34 @@ public class Plane : MonoBehaviour
     LineRenderer lineRenderer;
     Vector2 currentPosition;
     Rigidbody2D rigidbody;
-    public float speed = 1f;
+    public float speed;
     public AnimationCurve landing;
     float landingTimer;
+    float randomPosition;
+    float randomRotation;
+    public SpriteRenderer spriteRenderer;
+    public Sprite[] spriteSpawner;
+    
+    
     private void Start()
     {
-       lineRenderer = GetComponent<LineRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = spriteSpawner[Random.Range(0,4)];
+        speed = Random.Range(1, 3);
+        randomPosition = Random.Range(-5, 5);
+        randomRotation = Random.Range(0, 360);
+        lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0,transform.position);
         rigidbody = GetComponent<Rigidbody2D>();
-       
+        transform.position = new Vector3(randomPosition,randomPosition,0);
+        transform.rotation = Quaternion.Euler(0, 0, randomRotation);
     }
 
     
     private void FixedUpdate()
     {
+       
        currentPosition = transform.position;
         if(points.Count > 0 )
         {
@@ -67,6 +81,7 @@ public class Plane : MonoBehaviour
                 lineRenderer.positionCount--;
             }
         }
+        
 
     }
     private void  OnMouseDown()
