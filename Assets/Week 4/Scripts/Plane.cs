@@ -104,4 +104,13 @@ public class Plane : MonoBehaviour
         }
 
         }
+    private void OnTriggerEnter2D()
+    {
+        spriteRenderer.color = Color.red;
     }
+
+    private void OnTriggerExit2D()
+    {
+        spriteRenderer.color = Color.white;
+    }
+   }
