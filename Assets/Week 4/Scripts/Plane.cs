@@ -20,6 +20,7 @@ public class Plane : MonoBehaviour
     float landingTimer;
     float randomPosition;
     float randomRotation;
+   public bool planePreparedLand = false;
     public SpriteRenderer spriteRenderer;
     public Sprite[] spriteSpawner;
     
@@ -56,17 +57,6 @@ public class Plane : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            landingTimer += 0.5f*Time.deltaTime;
-            float interpolation= landing.Evaluate(landingTimer);
-            if (transform.localScale.z < 0.1f)
-            {
-                Destroy(gameObject);
-            }
-            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, interpolation);
-
-        }
         lineRenderer.SetPosition(0, transform.position);
         if (points.Count > 0)
         {
@@ -111,25 +101,44 @@ public class Plane : MonoBehaviour
         
         
         float tooClose = Vector3.Distance(gameObject.transform.position, collision.transform.position);
-        
-            print("too close");
-            if (tooClose > -0.25)
+        float interpolation=0;
+
+        if (tooClose > -0.25 && planePreparedLand == false)
             {
+                print("too close");
+            if (collision.OverlapPoint(gameObject.transform.position)){
+                
+                planePreparedLand = true;
+                
+                    if (transform.localScale.z <0.1)
+                    {
+                        print("Plane Has Landed");
+                        Destroy(gameObject);
 
-            spriteRenderer.color = Color.red;
-             if(Vector2.Distance(transform.position, collision.transform.position) < 1.2f)//1.0f for planes to look like they actually collide
-             {
-                 Destroy(gameObject);
-             }
+                    }
+                    transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, interpolation);
+
+                }
+               
+                }
+                
             
+                spriteRenderer.color = Color.red;
+                if (Vector3.Distance(transform.position, collision.transform.position) < 1.5f && planePreparedLand == false)//1.0f for planes to look like they actually collide
+                {
+                    Destroy(gameObject);
 
-        }
-    }
-    
+                }
+            }
+          
+        
+
+            
 
     private void OnTriggerExit2D()
     {
         spriteRenderer.color = Color.white;
+        planePreparedLand = false;
     }
 
     private void OnBecameInvisible()
