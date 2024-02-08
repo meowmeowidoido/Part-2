@@ -42,6 +42,10 @@ public class Knight : MonoBehaviour
 
         }
         animator.SetFloat("Movement", movement.magnitude);
+        if(Input.GetMouseButton(1) && !clickOnSelf)
+        {
+            attack();
+        }
     }
 
     private void OnMouseDown()
@@ -72,7 +76,12 @@ public class Knight : MonoBehaviour
             isDead = false;
             animator.SetTrigger("TakeDamage");
         }
+
        
+    }
+    void attack()
+    {
+        animator.SetTrigger("Attack");
     }
 
 }
