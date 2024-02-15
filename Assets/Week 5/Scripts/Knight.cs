@@ -15,11 +15,14 @@ public class Knight : MonoBehaviour
     public float health;
     public float maxHealth = 5;
     bool isDead = false;
+    float screenTimer;
     public HealthBar healthBar;
+    public SceneLoader sceneLoader;
     void Start()
     {
       rigidbody = GetComponent<Rigidbody2D>();
       animator = GetComponent<Animator>();
+      
         health = maxHealth;
     }
 
@@ -36,7 +39,19 @@ public class Knight : MonoBehaviour
     }
     void Update()
     {
-        if (isDead) return;
+        if (isDead)
+        {
+            print(screenTimer);
+            screenTimer += Time.deltaTime;
+            if (screenTimer > 2)
+            {
+
+                sceneLoader.LoadNextScene();
+                screenTimer = 0;
+            }
+            return;
+        }
+        
         if (Input.GetMouseButtonDown(0) && !clickOnSelf && !EventSystem.current.IsPointerOverGameObject())
         {
             destination =Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -47,6 +62,7 @@ public class Knight : MonoBehaviour
         {
             attack();
         }
+        
     }
 
     private void OnMouseDown()
@@ -71,6 +87,9 @@ public class Knight : MonoBehaviour
         {
             isDead = true;
             animator.SetTrigger("Death");
+            
+            
+          
         }
         else
         {
