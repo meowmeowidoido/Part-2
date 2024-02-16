@@ -48,6 +48,7 @@ public class Knight : MonoBehaviour
       
         if (isDead)
         {
+            print(screenTimer);
             screenTimer += Time.deltaTime;
             if (screenTimer > 4)
             {
