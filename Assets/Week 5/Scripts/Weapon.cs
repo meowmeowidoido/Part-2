@@ -37,4 +37,5 @@ public class Weapon : MonoBehaviour
             timerSpawn = 0;
         }
     }
+   
 }

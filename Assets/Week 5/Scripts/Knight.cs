@@ -22,8 +22,10 @@ public class Knight : MonoBehaviour
     {
       rigidbody = GetComponent<Rigidbody2D>();
       animator = GetComponent<Animator>();
-      
-        health = maxHealth;
+        health = PlayerPrefs.GetFloat("Health", maxHealth);
+        healthBar.slider.value=PlayerPrefs.GetFloat("Health",health);
+        SendMessage("takeDamage", 0, SendMessageOptions.DontRequireReceiver);
+
     }
 
     // Update is called once per frame
@@ -39,11 +41,16 @@ public class Knight : MonoBehaviour
     }
     void Update()
     {
+        if (health != PlayerPrefs.GetFloat("Health", health)){//works without the if statement as well
+            PlayerPrefs.SetFloat("Health", health);
+
+        }
+        print(health);
         if (isDead)
         {
             print(screenTimer);
             screenTimer += Time.deltaTime;
-            if (screenTimer > 2)
+            if (screenTimer > 4)
             {
 
                 sceneLoader.LoadNextScene();
@@ -96,7 +103,7 @@ public class Knight : MonoBehaviour
             isDead = false;
             animator.SetTrigger("TakeDamage");
         }
-
+        rememberHealth(health);
        
     }
     void attack()
@@ -104,4 +111,11 @@ public class Knight : MonoBehaviour
         animator.SetTrigger("Attack");
     }
 
+    public void rememberHealth(float storeHealth)
+    {
+        health = storeHealth;
+  
+
+
+    }
 }
