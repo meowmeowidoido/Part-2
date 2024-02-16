@@ -45,10 +45,9 @@ public class Knight : MonoBehaviour
             PlayerPrefs.SetFloat("Health", health);
 
         }
-        print(health);
+      
         if (isDead)
         {
-            print(screenTimer);
             screenTimer += Time.deltaTime;
             if (screenTimer > 4)
             {

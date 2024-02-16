@@ -7,10 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-   public void LoadNextScene()
+    public int nextSceneIndex;
+    public int currentSceneIndex;
+    private void Start()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        print(currentSceneIndex);
+    }
+   
+    public void GetSceneChange(int sceneNumber)
+     {
+         nextSceneIndex = sceneNumber;
+     }
+    public void LoadNextScene()
+
+
+    {
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        nextSceneIndex += (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+
         SceneManager.LoadScene(nextSceneIndex);
     }
 }
