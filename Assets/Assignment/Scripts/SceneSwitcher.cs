@@ -15,10 +15,14 @@ public class SceneSwitcher : MonoBehaviour
             LoadScene();
         }
     }
-    private void LoadScene()
+    public void LoadScene()
     {
        int  startingScreen= SceneManager.GetActiveScene().buildIndex;
        int nextScene =+ (startingScreen + 1) % SceneManager.sceneCountInBuildSettings;
+        if (startingScreen == 6)
+        {
+            nextScene=+(startingScreen-1)%SceneManager.sceneCountInBuildSettings;
+        }
 
         SceneManager.LoadScene(nextScene);
     }
