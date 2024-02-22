@@ -9,7 +9,9 @@ using Unity.PlasticSCM.Editor.WebApi;
 public class FootballerPlayer : MonoBehaviour
 {
     SpriteRenderer footballerSprite;
-  
+    Rigidbody2D rb;
+    public float speed = 100;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,7 @@ public class FootballerPlayer : MonoBehaviour
        
         footballerSprite=GetComponent<SpriteRenderer>();
         footballerSprite.color = Color.red;
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
    
@@ -37,5 +39,9 @@ public class FootballerPlayer : MonoBehaviour
         {
             footballerSprite.color = Color.red; 
         }
+    }
+    public void Move(Vector2 direction)
+    {
+        rb.AddForce(direction * speed);
     }
 }
