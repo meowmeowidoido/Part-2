@@ -23,7 +23,7 @@ public class FootballerPlayer : MonoBehaviour
         Selected(true);
     }
 
-    private void Selected(bool isSelected)
+    public void Selected(bool isSelected)
     {
         
         if (isSelected==true)
