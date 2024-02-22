@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
+using Unity.PlasticSCM.Editor.WebApi;
 
 public class FootballerPlayer : MonoBehaviour
 {
@@ -15,15 +16,17 @@ public class FootballerPlayer : MonoBehaviour
     {
        
         footballerSprite=GetComponent<SpriteRenderer>();
+        footballerSprite.color = Color.red;
+        
     }
 
    
     private void OnMouseDown()
     {
-        Selected(true);
+        Controller.SetSelectedPlayer(this);
     }
 
-    private void Selected(bool isSelected)
+    public void Selected(bool isSelected)
     {
         
         if (isSelected==true)
@@ -32,7 +35,7 @@ public class FootballerPlayer : MonoBehaviour
         }
         if(isSelected==false)
         {
-            footballerSprite.color = Color.white;
+            footballerSprite.color = Color.red; 
         }
     }
 }
