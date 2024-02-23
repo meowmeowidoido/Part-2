@@ -4,14 +4,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using JetBrains.Annotations;
+using TMPro;
 
 public class Controller : MonoBehaviour
 {
 
     // Start is called before the first frame update
     public Slider chargeSlider;
+    public TextMeshProUGUI scoreText;
     float chargeValue;
     public float maxCharge = 1;
+    public static float ballScore;
     Vector2 direction;
        public static FootballerPlayer SelectedPlayer {  get; private set; }
 
@@ -54,6 +57,7 @@ public class Controller : MonoBehaviour
             direction = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)SelectedPlayer.transform.position).normalized*chargeValue;
            
         }
+        scoreText.text= ballScore.ToString();
     }
 
 
