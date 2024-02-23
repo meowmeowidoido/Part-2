@@ -18,7 +18,6 @@ public class FootballerPlayer : MonoBehaviour
     {
        
         footballerSprite=GetComponent<SpriteRenderer>();
-        footballerSprite.color = Color.red;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -37,7 +36,7 @@ public class FootballerPlayer : MonoBehaviour
         }
         if(isSelected==false)
         {
-            footballerSprite.color = Color.red; 
+            footballerSprite.color = Color.yellow; 
         }
     }
     public void Move(Vector2 direction)

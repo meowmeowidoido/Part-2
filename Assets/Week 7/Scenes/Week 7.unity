@@ -131,6 +131,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.92156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7647170099572693616, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
       propertyPath: m_Name
       value: Player (3)
@@ -590,6 +602,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.92156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7647170099572693616, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
       propertyPath: m_Name
       value: Player (2)
@@ -3799,15 +3823,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.015686275
       objectReference: {fileID: 0}
     - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
       propertyPath: m_Color.r
-      value: 0.50980395
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7647170099572693616, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
       propertyPath: m_Name
@@ -4076,6 +4100,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926180598630242950, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7647170099572693616, guid: cb289ce2b707f114e844aa2e7698040e, type: 3}
       propertyPath: m_Name
       value: Player (1)
