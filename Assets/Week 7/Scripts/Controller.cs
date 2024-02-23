@@ -28,7 +28,7 @@ public class Controller : MonoBehaviour
         SelectedPlayer = player;
         SelectedPlayer.Selected(true);
     }
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         if(direction!= Vector2.zero)
         {
@@ -38,7 +38,7 @@ public class Controller : MonoBehaviour
             chargeSlider.value= chargeValue;
         }
     }
-    private void Update()
+    public void Update()
     {
         if (SelectedPlayer == null) return;
         if (Input.GetKeyDown(KeyCode.Space))
